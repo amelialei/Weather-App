@@ -22,9 +22,10 @@ def get_weather_from_ip(request):
     city = location.get('city')
     country_code = location.get('countryCode')
     weather_data = get_weather_from_location(city, country_code)
-    description = weather_data['weather'][0]['description']
     temperature = weather_data['main']['temp']
-    s = "You're in {}, {}. You can expect {} with a temperature of {} degrees".format(
-        city, country_code, description, temperature)
-    data = {'weather_data': s}
+    humidity = weather_data['main']['humidity']
+    wind = weather_data['wind']['speed']
+    feels_like = weather_data['main']['feels_like']
+    pressure = weather_data['main']['pressure']
+    data = {'Humidity': humidity, 'Wind': wind, 'FeelsLike': feels_like, 'Pressure': pressure, 'Location': city, 'Temperature': temperature}
     return JsonResponse(data)
