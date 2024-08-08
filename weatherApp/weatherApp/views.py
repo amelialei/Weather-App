@@ -14,7 +14,7 @@ def get_location_from_ip(ip_address):
 
 def get_weather_from_location(ip):
     token = settings.WEATHER_TOKEN
-    url = f'http://api.weatherapi.com/v1/current.json?key={token}&q={ip}'
+    url = f'http://api.weatherapi.com/v1/forecast.json?key={token}&q={ip}'
     response = requests.get(url)
     return response.json()
 
@@ -29,7 +29,14 @@ def get_weather_from_ip(request):
     feels_like = weather_data['current']['feelslike_f']
     pressure = weather_data['current']['pressure_in']
     url = weather_data['current']['condition']['icon']
-    # url = "{% static 'images/{}' %}".format(png)
-    data = {'Humidity': humidity, 'Wind': wind, 'FeelsLike': feels_like, 'Pressure': pressure, 'Location': city, 'Temperature': temperature, 'WeatherIcon': url}
+    fc_temperature = weather_data['forecast']['forecastday'][0]['day']['avgtemp_f']
+    fc_humidity = weather_data['forecast']['forecastday'][0]['day']['avghumidity']
+    fc_max_wind = weather_data['forecast']['forecastday'][0]['day']['maxwind_mph']
+    fc_sunrise = weather_data['forecast']['forecastday'][0]['astro']['sunrise']
+    fc_sunset = weather_data['forecast']['forecastday'][0]['astro']['sunset']
+    fc_url = weather_data['forecast']['forecastday'][0]['day']['condition']['icon']
+
+    data = {'current': {'Humidity': humidity, 'Wind': wind, 'FeelsLike': feels_like, 'Pressure': pressure,  'Temperature': temperature, 'WeatherIcon': url,'Location': city}, 
+            'forecast':{'Humidity': fc_humidity, 'Temperature': fc_temperature, 'WeatherIcon': fc_url, 'Wind': fc_max_wind, 'Sunrise': fc_sunrise, 'Sunset': fc_sunset,'Location': city}}
     return JsonResponse(data)
 

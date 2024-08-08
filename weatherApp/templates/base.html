@@ -20,13 +20,30 @@
                 data: {"ip": json.ip},
                 dataType: 'json',
                 success: function (data) {
-                    document.getElementById('humidity').innerHTML = data.Humidity + "%"
-                    document.getElementById('wind').innerHTML = data.Wind + ' MPH'
-                    document.getElementById('temperature').innerHTML = data.Temperature + "°"
-                    document.getElementById('location').innerHTML = data.Location
-                    document.getElementById('feelslike').innerHTML = data.FeelsLike + "°"
-                    document.getElementById('pressure').innerHTML = data.Pressure + ' inHg'
-                    document.getElementById('weatherIcon').src = data.WeatherIcon
+                    document.getElementById('humidity').innerHTML = data.current.Humidity + "%"
+                    document.getElementById('wind').innerHTML = data.current.Wind + ' MPH'
+                    document.getElementById('temperature').innerHTML = data.current.Temperature + "°"
+                    document.getElementById('feelslike').innerHTML = data.current.FeelsLike + "°"
+                    document.getElementById('pressure').innerHTML = data.current.Pressure + ' inHg'
+                    document.getElementById('weatherIcon').src = data.current.WeatherIcon
+                    document.getElementById('locationLeft').innerHTML = data.current.Location
+
+
+                    document.getElementById('fc_temperature').innerHTML = data.forecast.Temperature+ "°"
+                    document.getElementById('fc_humidity').innerHTML = data.forecast.Humidity + "%"
+                    document.getElementById('fc_wind').innerHTML = data.forecast.Wind+ ' MPH'
+                    document.getElementById('fc_weatherIcon').src = data.forecast.WeatherIcon
+                    document.getElementById('sunrise').innerHTML = data.forecast.Sunrise
+                    document.getElementById('sunset').innerHTML = data.forecast.Sunset
+                    document.getElementById('locationRight').innerHTML = data.forecast.Location
+
+
+
+
+
+
+    
+                    
                 }
             });
         }
