@@ -22,7 +22,7 @@ def get_weather_from_ip(request):
     ip_address = request.GET.get('ip')
     location = get_location_from_ip(ip_address)
     city = location.get('city')
-    weather_data = get_weather_from_location(ip_address)
+    weather_data = get_weather_from_location(city)
     temperature = weather_data['current']['temp_f']
     humidity = weather_data['current']['humidity']
     wind = weather_data['current']['wind_mph']
