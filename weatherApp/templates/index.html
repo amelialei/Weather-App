@@ -2,17 +2,6 @@
 
 {% block content %}
     <div class="main__container d-flex vh-100 d-flex flex-column">
-        <div class="d-flex justify-content-center mt-5">
-            <div class="form__container">
-                <form action="{%url 'get_weather_from_ip' %}" method="get">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="Location" placeholder="Enter a new location">
-                        <button type="submit" class="btn btn-primary mt-2">Get Weather</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         <div class="d-flex justify-content-center align-items-center flex-grow-1">
             <div class="row w-100">
                 <div class="left-half d-flex justify-content-center align-items-center">
