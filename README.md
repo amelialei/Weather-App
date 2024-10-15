@@ -12,12 +12,12 @@ This project is a web-based weather application built using Django and Bootstrap
 - Displays location-based data automatically using the user's IP.
 
 ## Technologies Used
-- Frontend:
+- **Frontend**:
   - HTML
   - CSS (with Bootstrap 5.3.3)
   - JavaScript
     
-- Backend:
+- **Backend**:
   - Python (Django Framework)
   - WeatherAPI for weather data
   - ipifyAPI for location data based on the user's IP
